@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/prithesh-p/prithesh.git'
+                git branch: 'main', url: 'https://github.com/prithesh-p/prithesh.git'
             }
         }
 
@@ -19,8 +19,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh 'docker rm -f node-app-container || true'
-                    sh 'docker run -d -p 8080:8080 --name node-app-container node-app-image'
+                    dockerImage.run('-p 3000:3000')
                 }
             }
         }
