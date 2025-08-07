@@ -19,7 +19,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image("node-app-image").run("-d -p 3000:3000")
+                    docker.image("node-app-image").run("-d -p 8080:8080")
                 }
             }
         }
